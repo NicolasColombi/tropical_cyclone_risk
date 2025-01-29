@@ -110,7 +110,9 @@ def run_tracks(year, n_tracks, b):
     ds_wnd = xr.open_dataset(fn_wnd_stat)
     for i in range(12):
         dt_month = datetime.datetime(year, i + 1, 15)
-        ds_dt_month = input.convert_from_datetime(ds_wnd, [dt_month])[0].astype('datetime64[ns]')
+        # ds_dt_month = input.convert_from_datetime(ds_wnd, [dt_month])[0].astype('datetime64[ns]')
+        ds_dt_month = input. convert_from_datetime(vpot,[dt_month]) [0]
+        ds_dt_month_fn_wnd = input.convert_from_datetime(ds_wnd,[dt_month]) [0]
         vpot_month = np.nan_to_num(vpot.interp(time = ds_dt_month).data, 0)
         rh_mid_month = rh_mid.interp(time = ds_dt_month).data
         chi_month = chi.interp(time = ds_dt_month).data
@@ -120,7 +122,7 @@ def run_tracks(year, n_tracks, b):
 
         mld_month = mat.interp_2d_grid(mld['lon'], mld['lat'], np.nan_to_num(mld[:, :, i]), lon, lat)
         strat_month = mat.interp_2d_grid(strat['lon'], strat['lat'], np.nan_to_num(strat[:, :, i]), lon, lat)
-        cpl_fast[i] = coupled_fast.Coupled_FAST(fn_wnd_stat, b, ds_dt_month,
+        cpl_fast[i] = coupled_fast.Coupled_FAST(fn_wnd_stat, b, ds_dt_month_fn_wnd,
                                                 namelist.output_interval_s, T_s)
         cpl_fast[i].init_fields(lon, lat, chi_month, vpot_month, mld_month, strat_month)
 

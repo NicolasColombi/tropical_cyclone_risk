@@ -15,9 +15,9 @@ exp_name = 'test'
 # variable key words in the structure var_keys.
 # file_type is the file type of the input files, and
 # can be either 'netcdf' or 'grib'
-dataset_type = 'ERA5' #'GCM'
-exp_prefix = 'era5' #GFDL-CM4_ssp585_r1i1p1f1'
-file_type = 'grib'
+dataset_type = 'GCM' #'GCM'
+exp_prefix = 'GFDL-CM4_ssp585_r1i1p1f1' #GFDL-CM4_ssp585_r1i1p1f1'
+file_type = 'netcdf'
 
 # Variable naming based on dataset_type.
 # 'sst' is sea-surface temperature (monthly-averaged)
@@ -40,17 +40,17 @@ n_procs = 16              # number of processes to use in dask
 """
 These parameters configure the dates for the TC-risk model.
 """
-start_year = 2016                     # year to start downscaling
+start_year = 2025                     # year to start downscaling
 start_month = 1                       # month of start_year to start downscaling
-end_year = 2021                       # year to stop downscaling
+end_year = 2025                       # year to stop downscaling
 end_month = 12                        # month of end_year to stop downscaling
 
 """
 These parameters configure the output.
 """
-output_interval_s = 3600              # output interval of tracks, seconds (does not change time integration)
+output_interval_s = 3600*3              # output interval of tracks, seconds (does not change time integration)
 total_track_time_days = 15            # total time to integrate tracks, days
-tracks_per_year = 20                  # total number of tracks to simulate per year
+tracks_per_year = 5                  # total number of tracks to simulate per year
 
 """
 These parameters configure thermodynamics and thermodynamic constants.

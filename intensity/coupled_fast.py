@@ -275,7 +275,7 @@ class Coupled_FAST(bam_track.BetaAdvectionTrack):
         tc_dissipates.terminal = True
 
         # Solve for the intensity.
-        if m is None:
+        if m is None or np.isnan(m):
             # This means no m has been provided. Initialize with dvdt = 0.
             m_init = self._init_m(np.asarray([clon, clat, v]), 0)
         else:
