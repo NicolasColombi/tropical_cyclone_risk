@@ -54,4 +54,9 @@ def read_drag(basin):
 
     lon_b, lat_b, Cd_b = basin.transform_global_field(lon, lat, Cd)
     f_Cd = interp2d(lon_b, lat_b, Cd_b.T, kx=1, ky=1)
+
+    # print("Transformed Longitude:", lon_b.min(), lon_b.max())
+    # print("Transformed Latitude:", lat_b.min(), lat_b.max())
+    # print("Transformed Cd values:", Cd_b)
+
     return(f_Cd)

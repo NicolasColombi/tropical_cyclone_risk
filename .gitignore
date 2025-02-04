@@ -4,3 +4,4 @@
 *.nc
 *.status
 *.pyc
+*.DS_Store
